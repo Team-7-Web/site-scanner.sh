@@ -98,10 +98,10 @@ echo
 #Dir Buster results processing
 echo -e "Processing Report"${CYN}
 tail -n +19 dirb7.txt | grep -v CODE:303 | grep -v CODE:403 | grep -v CODE:500 | grep -v 'Use mode' | grep -v 'WARNING' |grep -v OPTION: > dirb7temp.txt
-sed -i 's|+ http://192.168.77.129||g' dirb7temp.txt
-sed -i 's|==> DIRECTORY: http://192.168.77.129||g' dirb7temp.txt
+sed -i 's|+ http://'"$URL"'||g' dirb7temp.txt
+sed -i 's|==> DIRECTORY: http://'"$URL"'||g' dirb7temp.txt
 sed -i 's|[(].*||g' dirb7temp.txt
-sed -i 's|---- Entering directory: http://192.168.77.129||g' dirb7temp.txt
+sed -i 's|---- Entering directory: http://'"$URL"'||g' dirb7temp.txt
 
 #Nikto results processing
 tail -n +3 nikto7.txt > nikto7temp.txt
