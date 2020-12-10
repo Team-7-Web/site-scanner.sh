@@ -39,6 +39,10 @@ echo
 echo
 echo -e "${TEN}""${TRE}"${RED}"*Be patient, some portions of the scan take a while!"${CYN}
 echo
+echo
+echo
+echo
+echo
 echo "${TEN}""${TAB}""${TRE}""${SP}"Please enter the IP Address of the target:
 echo "${TEN}""${TAB}""${SP}""${SP}"\(In the following example format: 123.45.67.8\)
 
