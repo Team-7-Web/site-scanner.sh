@@ -62,25 +62,25 @@ rm -vf team7scan.txt
 rm -vf $URL.txt
 
 
-# run each script
+#run each script
 
 #whatweb tool
-echo -e ${RED}"now running step #1 WhatWeb Tool Scan"${CYN}
+echo -e ${RED}"Now running step #1 WhatWeb Tool Scan"${CYN}
 whatweb -v -a 3 "$URL" --log-verbose=whatweb7.txt
 
 
 #dirb tool
-echo -e ${RED}"now running step #2 Dir Buster Scan"${CYN}
+echo -e ${RED}"Now running step #2 Dir Buster Scan"${CYN}
 dirb http://"$URL" -w -f -N 404 -o dirb7.txt
 
 
 #nikto tool
-echo -e ${RED}"now running step #3 Nikto Scan"${CYN}
+echo -e ${RED}"Now running step #3 Nikto Scan"${CYN}
 nikto -h "$URL" -Display 3 -output nikto7.txt
 
 
 #nmap tool
-echo -e ${RED}"nowrunning step #4 Nmap Scan"${CYN}
+echo -e ${RED}"Now running step #4 Nmap Scan"${CYN}
 nmap -n -v -A -T4 -p- "$URL" -o nmap7.txt
 
 
@@ -109,10 +109,26 @@ tail -n +3 nikto7.txt > nikto7temp.txt
 
 #Consolidating logs into final report
 touch $URL.txt
+echo "Nmap Report *********************************" >> $URL.txt
+echo  >> $URL.txt
 cat nmap7.txt >> $URL.txt
+echo  >> $URL.txt
+echo  >> $URL.txt
+echo "Dir Buster Report *********************************" >> $URL.txt
+echo  >> $URL.txt
 cat dirb7temp.txt >> $URL.txt
+echo  >> $URL.txt
+echo  >> $URL.txt
+echo "WhatWeb Report *********************************" >> $URL.txt
+echo  >> $URL.txt
 cat whatweb7.txt >> $URL.txt
+echo  >> $URL.txt
+echo  >> $URL.txt
+echo "Nikto Report *********************************" >> $URL.txt
+echo  >> $URL.txt
 cat nikto7temp.txt >> $URL.txt
+echo  >> $URL.txt
+echo "End of Report *********************************" >> $URL.txt
 
 
 #File clean up
