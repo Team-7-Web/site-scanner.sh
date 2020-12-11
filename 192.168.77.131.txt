@@ -1,0 +1,377 @@
+Nmap Report *********************************
+
+# Nmap 7.80 scan initiated Thu Dec 10 18:47:05 2020 as: nmap -n -v -A -T4 -p- -o nmap7.txt 192.168.77.131
+Nmap scan report for 192.168.77.131
+Host is up (0.0021s latency).
+Not shown: 65505 closed ports
+PORT      STATE SERVICE     VERSION
+21/tcp    open  ftp         vsftpd 2.3.4
+|_ftp-anon: Anonymous FTP login allowed (FTP code 230)
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to 192.168.77.130
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      vsFTPd 2.3.4 - secure, fast, stable
+|_End of status
+22/tcp    open  ssh         OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)
+| ssh-hostkey: 
+|   1024 60:0f:cf:e1:c0:5f:6a:74:d6:90:24:fa:c4:d5:6c:cd (DSA)
+|_  2048 56:56:24:0f:21:1d:de:a7:2b:ae:61:b1:24:3d:e8:f3 (RSA)
+23/tcp    open  telnet      Linux telnetd
+25/tcp    open  smtp        Postfix smtpd
+|_smtp-commands: metasploitable.localdomain, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, 
+53/tcp    open  domain      ISC BIND 9.4.2
+| dns-nsid: 
+|_  bind.version: 9.4.2
+80/tcp    open  http        Apache httpd 2.2.8 ((Ubuntu) DAV/2)
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.2.8 (Ubuntu) DAV/2
+|_http-title: Metasploitable2 - Linux
+111/tcp   open  rpcbind     2 (RPC #100000)
+139/tcp   open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp   open  netbios-ssn Samba smbd 3.0.20-Debian (workgroup: WORKGROUP)
+512/tcp   open  exec        netkit-rsh rexecd
+513/tcp   open  login?
+514/tcp   open  shell       Netkit rshd
+1099/tcp  open  java-rmi    GNU Classpath grmiregistry
+1524/tcp  open  bindshell   Metasploitable root shell
+2049/tcp  open  nfs         2-4 (RPC #100003)
+2121/tcp  open  ftp         ProFTPD 1.3.1
+3306/tcp  open  mysql?
+|_mysql-info: ERROR: Script execution failed (use -d to debug)
+3632/tcp  open  distccd     distccd v1 ((GNU) 4.2.4 (Ubuntu 4.2.4-1ubuntu4))
+5432/tcp  open  postgresql  PostgreSQL DB 8.3.0 - 8.3.7
+|_ssl-date: 2020-12-10T23:51:01+00:00; +17s from scanner time.
+5900/tcp  open  vnc         VNC (protocol 3.3)
+| vnc-info: 
+|   Protocol version: 3.3
+|   Security types: 
+|_    VNC Authentication (2)
+6000/tcp  open  X11         (access denied)
+6667/tcp  open  irc         UnrealIRCd (Admin email admin@Metasploitable.LAN)
+6697/tcp  open  irc         UnrealIRCd
+8009/tcp  open  ajp13       Apache Jserv (Protocol v1.3)
+|_ajp-methods: Failed to get a valid response for the OPTION request
+8180/tcp  open  http        Apache Tomcat/Coyote JSP engine 1.1
+|_http-favicon: Apache Tomcat
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-title: Apache Tomcat/5.5
+8787/tcp  open  drb         Ruby DRb RMI (Ruby 1.8; path /usr/lib/ruby/1.8/drb)
+45014/tcp open  java-rmi    GNU Classpath grmiregistry
+45286/tcp open  mountd      1-3 (RPC #100005)
+50166/tcp open  status      1 (RPC #100024)
+56958/tcp open  nlockmgr    1-4 (RPC #100021)
+Service Info: Hosts:  metasploitable.localdomain, irc.Metasploitable.LAN; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+|_clock-skew: mean: 1h40m16s, deviation: 2h53m13s, median: 16s
+| nbstat: NetBIOS name: METASPLOITABLE, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
+| Names:
+|   METASPLOITABLE<00>   Flags: <unique><active>
+|   METASPLOITABLE<03>   Flags: <unique><active>
+|   METASPLOITABLE<20>   Flags: <unique><active>
+|   \x01\x02__MSBROWSE__\x02<01>  Flags: <group><active>
+|   WORKGROUP<00>        Flags: <group><active>
+|   WORKGROUP<1d>        Flags: <unique><active>
+|_  WORKGROUP<1e>        Flags: <group><active>
+| smb-os-discovery: 
+|   OS: Unix (Samba 3.0.20-Debian)
+|   Computer name: metasploitable
+|   NetBIOS computer name: 
+|   Domain name: localdomain
+|   FQDN: metasploitable.localdomain
+|_  System time: 2020-12-10T18:50:08-05:00
+| smb-security-mode: 
+|   account_used: <blank>
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+|_smb2-time: Protocol negotiation failed (SMB2)
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu Dec 10 18:51:43 2020 -- 1 IP address (1 host up) scanned in 278.27 seconds
+
+
+Dir Buster Report *********************************
+
+---- Scanning URL: http://192.168.77.131/ ----
+/dav/
+/index 
+/index.php 
+/phpinfo 
+/phpinfo.php 
+/phpMyAdmin/
+/test/
+/twiki/
+
+/dav/ ----
+
+/phpMyAdmin/ ----
+/phpMyAdmin/calendar 
+/phpMyAdmin/changelog 
+/phpMyAdmin/ChangeLog 
+/phpMyAdmin/contrib/
+/phpMyAdmin/docs 
+/phpMyAdmin/error 
+/phpMyAdmin/export 
+/phpMyAdmin/favicon.ico 
+/phpMyAdmin/import 
+/phpMyAdmin/index 
+/phpMyAdmin/index.php 
+/phpMyAdmin/js/
+/phpMyAdmin/lang/
+/phpMyAdmin/libraries/
+/phpMyAdmin/license 
+/phpMyAdmin/LICENSE 
+/phpMyAdmin/main 
+/phpMyAdmin/navigation 
+/phpMyAdmin/phpinfo 
+/phpMyAdmin/phpinfo.php 
+/phpMyAdmin/phpmyadmin 
+/phpMyAdmin/print 
+/phpMyAdmin/readme 
+/phpMyAdmin/README 
+/phpMyAdmin/robots 
+/phpMyAdmin/robots.txt 
+/phpMyAdmin/scripts/
+/phpMyAdmin/setup/
+/phpMyAdmin/sql 
+/phpMyAdmin/test/
+/phpMyAdmin/themes/
+/phpMyAdmin/TODO 
+/phpMyAdmin/webapp 
+
+/test/ ----
+
+/twiki/ ----
+/twiki/bin/
+/twiki/index 
+/twiki/index.html 
+/twiki/lib/
+/twiki/license 
+/twiki/pub/
+/twiki/readme 
+
+/phpMyAdmin/contrib/ ----
+/phpMyAdmin/contrib/packaging/
+/phpMyAdmin/contrib/README 
+
+/phpMyAdmin/js/ ----
+/phpMyAdmin/js/common 
+/phpMyAdmin/js/functions 
+/phpMyAdmin/js/indexes 
+/phpMyAdmin/js/navigation 
+/phpMyAdmin/js/tooltip 
+
+/phpMyAdmin/lang/ ----
+
+/phpMyAdmin/libraries/ ----
+/phpMyAdmin/libraries/auth/
+/phpMyAdmin/libraries/dbg/
+/phpMyAdmin/libraries/dbi/
+/phpMyAdmin/libraries/engines/
+/phpMyAdmin/libraries/export/
+/phpMyAdmin/libraries/import/
+/phpMyAdmin/libraries/Index 
+/phpMyAdmin/libraries/PMA 
+/phpMyAdmin/libraries/transformations/
+
+/phpMyAdmin/scripts/ ----
+/phpMyAdmin/scripts/signon 
+/phpMyAdmin/scripts/upgrade 
+
+/phpMyAdmin/setup/ ----
+/phpMyAdmin/setup/frames/
+/phpMyAdmin/setup/index 
+/phpMyAdmin/setup/index.php 
+/phpMyAdmin/setup/lib/
+/phpMyAdmin/setup/scripts 
+/phpMyAdmin/setup/styles 
+
+/phpMyAdmin/test/ ----
+/phpMyAdmin/test/theme 
+
+/phpMyAdmin/themes/ ----
+/phpMyAdmin/themes/original/
+
+/twiki/bin/ ----
+/twiki/bin/attach 
+/twiki/bin/changes 
+/twiki/bin/edit 
+/twiki/bin/manage 
+/twiki/bin/passwd 
+/twiki/bin/preview 
+/twiki/bin/register 
+/twiki/bin/save 
+/twiki/bin/search 
+/twiki/bin/statistics 
+/twiki/bin/upload 
+/twiki/bin/view 
+/twiki/bin/viewfile 
+
+/twiki/lib/ ----
+
+/twiki/pub/ ----
+/twiki/pub/favicon.ico 
+/twiki/pub/Main/
+
+/phpMyAdmin/contrib/packaging/ ----
+
+/phpMyAdmin/libraries/auth/ ----
+
+/phpMyAdmin/libraries/dbg/ ----
+/phpMyAdmin/libraries/dbg/setup 
+
+/phpMyAdmin/libraries/dbi/ ----
+
+/phpMyAdmin/libraries/engines/ ----
+
+/phpMyAdmin/libraries/export/ ----
+/phpMyAdmin/libraries/export/csv 
+/phpMyAdmin/libraries/export/excel 
+/phpMyAdmin/libraries/export/pdf 
+/phpMyAdmin/libraries/export/sql 
+/phpMyAdmin/libraries/export/xls 
+/phpMyAdmin/libraries/export/xml 
+
+/phpMyAdmin/libraries/import/ ----
+/phpMyAdmin/libraries/import/csv 
+/phpMyAdmin/libraries/import/README 
+/phpMyAdmin/libraries/import/sql 
+
+/phpMyAdmin/libraries/transformations/ ----
+/phpMyAdmin/libraries/transformations/generator 
+/phpMyAdmin/libraries/transformations/README 
+
+/phpMyAdmin/setup/frames/ ----
+
+/phpMyAdmin/setup/lib/ ----
+
+/phpMyAdmin/themes/original/ ----
+/phpMyAdmin/themes/original/css/
+/phpMyAdmin/themes/original/img/
+/phpMyAdmin/themes/original/screen 
+
+/twiki/pub/Main/ ----
+
+/phpMyAdmin/themes/original/css/ ----
+
+/phpMyAdmin/themes/original/img/ ----
+/phpMyAdmin/themes/original/img/error 
+/phpMyAdmin/themes/original/img/item 
+/phpMyAdmin/themes/original/img/spacer 
+
+-----------------
+END_TIME: Thu Dec 10 18:46:04 2020
+DOWNLOADED: 138360 - FOUND: 83
+
+
+WhatWeb Report *********************************
+
+WhatWeb report for http://192.168.77.131
+Status    : 200 OK
+Title     : Metasploitable2 - Linux
+IP        : 192.168.77.131
+Country   : RESERVED, ZZ
+
+Summary   : Apache[2.2.8], PHP[5,5.2.4-2ubuntu5.10], WebDAV[2], HTTPServer[Ubuntu Linux][Apache/2.2.8 (Ubuntu) DAV/2], X-Powered-By[PHP/5.2.4-2ubuntu5.10]
+
+Detected Plugins:
+[ Apache ]
+	The Apache HTTP Server Project is an effort to develop and 
+	maintain an open-source HTTP server for modern operating 
+	systems including UNIX and Windows NT. The goal of this 
+	project is to provide a secure, efficient and extensible 
+	server that provides HTTP services in sync with the current 
+	HTTP standards. 
+
+	Version      : 2.2.8 (from HTTP Server Header)
+	Google Dorks: (3)
+	Website     : http://httpd.apache.org/
+
+[ HTTPServer ]
+	HTTP server header string. This plugin also attempts to 
+	identify the operating system from the server header. 
+
+	OS           : Ubuntu Linux
+	String       : Apache/2.2.8 (Ubuntu) DAV/2 (from server string)
+
+[ PHP ]
+	PHP is a widely-used general-purpose scripting language 
+	that is especially suited for Web development and can be 
+	embedded into HTML. This plugin identifies PHP errors, 
+	modules and versions and extracts the local file path and 
+	username if present. 
+
+	Version      : 5.2.4-2ubuntu5.10
+	Version      : 5
+	Google Dorks: (2)
+	Website     : http://www.php.net/
+
+[ WebDAV ]
+	Web-based Distributed Authoring and Versioning (WebDAV) is 
+	a set of methods based on the Hypertext Transfer Protocol 
+	(HTTP) that facilitates collaboration between users in 
+	editing and managing documents and files stored on World 
+	Wide Web servers. - More Info: 
+	http://en.wikipedia.org/wiki/WebDAV 
+
+	Version      : 2
+
+[ X-Powered-By ]
+	X-Powered-By HTTP header 
+
+	String       : PHP/5.2.4-2ubuntu5.10 (from x-powered-by string)
+
+HTTP Headers:
+	HTTP/1.1 200 OK
+	Date: Thu, 10 Dec 2020 23:43:13 GMT
+	Server: Apache/2.2.8 (Ubuntu) DAV/2
+	X-Powered-By: PHP/5.2.4-2ubuntu5.10
+	Content-Length: 891
+	Connection: close
+	Content-Type: text/html
+	
+
+
+Nikto Report *********************************
+
++ Target Port: 80
++ GET Retrieved x-powered-by header: PHP/5.2.4-2ubuntu5.10
++ GET The anti-clickjacking X-Frame-Options header is not present.
++ GET The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ GET The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ HEAD Apache/2.2.8 appears to be outdated (current is at least Apache/2.4.37). Apache 2.2.34 is the EOL for the 2.x branch.
++ GET Uncommon header 'tcn' found, with contents: list
++ GET Apache mod_negotiation is enabled with MultiViews, which allows attackers to easily brute force file names. See http://www.wisec.it/sectou.php?id=4698ebdc59d15. The following alternatives for 'index' were found: index.php
++ RHTYNHHL Web Server returns a valid response with junk HTTP methods, this may cause false positives.
++ OSVDB-877: TRACE HTTP TRACE method is active, suggesting the host is vulnerable to XST
++ GET /phpinfo.php: Output from the phpinfo() function was found.
++ OSVDB-3268: GET /doc/: Directory indexing found.
++ OSVDB-48: GET /doc/: The /doc/ directory is browsable. This may be /usr/doc.
++ OSVDB-12184: GET /?=PHPB8B5F2A0-3C92-11d3-A3A9-4C7B08C10000: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings.
++ OSVDB-12184: GET /?=PHPE9568F36-D428-11d2-A769-00AA001ACF42: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings.
++ OSVDB-12184: GET /?=PHPE9568F34-D428-11d2-A769-00AA001ACF42: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings.
++ OSVDB-12184: GET /?=PHPE9568F35-D428-11d2-A769-00AA001ACF42: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings.
++ OSVDB-3092: GET /phpMyAdmin/changelog.php: phpMyAdmin is for managing MySQL databases, and should be protected or limited to authorized hosts.
++ GET Server may leak inodes via ETags, header found with file /phpMyAdmin/ChangeLog, inode: 92462, size: 40540, mtime: Tue Dec  9 12:24:00 2008
++ OSVDB-3092: GET /phpMyAdmin/ChangeLog: phpMyAdmin is for managing MySQL databases, and should be protected or limited to authorized hosts.
++ OSVDB-3268: GET /test/: Directory indexing found.
++ OSVDB-3092: GET /test/: This might be interesting...
++ OSVDB-3233: GET /phpinfo.php: PHP is installed, and a test script which runs phpinfo() was found. This gives a lot of system information.
++ OSVDB-3268: GET /icons/: Directory indexing found.
++ OSVDB-3233: GET /icons/README: Apache default file found.
++ GET /phpMyAdmin/: phpMyAdmin directory found
++ OSVDB-3092: GET /phpMyAdmin/Documentation.html: phpMyAdmin is for managing MySQL databases, and should be protected or limited to authorized hosts.
++ OSVDB-3092: GET /phpMyAdmin/README: phpMyAdmin is for managing MySQL databases, and should be protected or limited to authorized hosts.
+
+End of Report *********************************
