@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#this is supposed to be a timer but it is not currently working
+#Script initiation timer
 start=$SECONDS
 
 #presentation spacing and color variables
@@ -43,13 +43,14 @@ echo
 echo
 echo
 echo
-echo "${TEN}""${TAB}""${TRE}""${SP}"Please enter the IP Address of the target:
-echo "${TEN}""${TAB}""${SP}""${SP}"\(In the following example format: 123.45.67.8\)
+echo "${TEN}""${SP}"Please enter the domain name or IP address of the target:
+#echo "${TEN}""${TAB}""${SP}""${SP}"\(In the following example format: 123.45.67.8\)
 
 # create a prompt and an editable bash variable from the IP address
 echo
-read -e -p "IP:${SP}" URL
-
+read -e -p "Address:${SP}" ANY
+URL=$(fping -A -d $ANY | awk '{print $1}')
+echo $URL
 
 #Remove old files to avoid file naming conflicts
 rm -vf dirb7.txt
@@ -63,32 +64,37 @@ rm -vf wpscan7temp.txt
 rm -vf $URL.txt
 
 
+
 #run each script
 
 #whatweb tool
 echo -e ${RED}"Now running step #1 WhatWeb Tool Scan"${CYN}
 whatweb -v -a 3 "$URL" --log-verbose=whatweb7.txt
+echo -e ${CYN}"Total time from start: $SECONDS" seconds
 echo
 
 #dirb tool
 echo -e ${RED}"Now running step #2 Dir Buster Scan"${CYN}
 dirb http://"$URL" -w -f -N 404 -o dirb7.txt
+echo -e ${CYN}"Total time from start: $SECONDS" seconds
 echo
 
 #nikto tool
 echo -e ${RED}"Now running step #3 Nikto Scan"${CYN}
 nikto -h "$URL" -Display 3 -output nikto7.txt
+echo -e ${CYN}"Total time from start: $SECONDS" seconds
 echo
 
 #nmap tool
 echo -e ${RED}"Now running step #4 Nmap Scan"${CYN}
 nmap -n -v -A -T4 -p- "$URL" -o nmap7.txt
+echo -e ${CYN}"Total time from start: $SECONDS" seconds
 echo
 
 #wpscan tool
 echo -e ${RED}"Now running step #5 WPScan"${CYN}
 wpscan --url http://"$URL" -v --detection-mode aggressive --rua --ignore-main-redirect -o wpscan7.txt
-echo -e ${NC}
+echo -e ${CYN}"Total time from start: $SECONDS" seconds
 echo
 
 #Scan complete message
@@ -174,9 +180,14 @@ echo
 echo -e "Filename: $URL.txt"${NC}
 echo
 #Completion timer message but not currently working
-duration=$(( SECONDS - start ))
+#duration=$(( SECONDS - start ))
+#Duration timer
+echo -e ${CYN}"Total run time: $SECONDS" seconds${NC} 
+echo
 
 
 
-# Need more tools.  4 moree
+# Need more tools.  2 more
+
+
 
